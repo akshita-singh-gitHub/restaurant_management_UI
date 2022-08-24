@@ -1,0 +1,128 @@
+
+<!-- 
+<div id="myNavbar">
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    
+          <a class="nav-link "  aria-current="page" routerLink=""> EatVegan</a>
+ 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ">
+      
+        
+
+       
+        
+    
+
+       
+      </ul>
+    </div>
+    <div class="dropdown" >
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+ 
+  
+      <ul class="dropdown-menu dropdown-menu-dark " aria-labelledby="dropdownMenuButton2" >
+     
+        <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="cart">My Cart</a></li>
+        <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="OrderHistory">My Orders</a></li>
+        <li *ngIf="LoginUserDetails!=null" class="nav-item"><a class="nav-link " aria-current="page"  (click)="Logout(LoginUserDetails)" >Logout</a></li>
+
+    
+        <li  *ngIf="LoginUserDetails==null" class="nav-item ms-auto "><a class="nav-link ml-auto ms-auto" aria-current="page" routerLink="login"  >Login </a></li>
+     <li *ngIf="LoginUserDetails!=null" class="nav-item"><a class="nav-link " aria-current="page"   (click)="openModal()" >Sign Out </a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+</div> -->
+<header class="header">
+<nav class="navbar navbar-expand-lg header-nav fixed-top navbar-expand-md">
+  <div class="container-fluid">
+    <a class="navbar-brand" href=" ">EAT VEGAN</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span ></span>
+      <span ></span>
+      <span ></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 ">
+        
+          <li class="nav-item"><a class="nav-link "  aria-current="page" routerLink="addResto">Add Restaurant</a></li>
+          <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="orders">Menu</a></li>
+          <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="AdminRestoList">Admnin</a></li>
+          <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="AdminMenuList">AdmninMenu</a></li>
+          <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="RestoOwner">RestoOwner</a></li>
+          <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="OrderList">OrderList</a></li>
+          <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="AdminSales">AdminSales</a></li>
+     
+      </ul>
+ 
+<ul class="navbar-nav ms-5 mb-2 mb-lg-0 ">
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      My Account 
+    </a>
+    <ul class="dropdown-menu dropdown-menu-dark ">
+      <li><a class="dropdown-item" routerLink="cart">My Cart</a></li>
+      <li><a class="dropdown-item" routerLink="OrderHistory">My Orders</a></li>
+      <li *ngIf="LoginUserDetails!=null"><a class="dropdown-item" (click)="Logout(LoginUserDetails)" >Logout</a></li>
+      <li  *ngIf="LoginUserDetails==null"><a class="dropdown-item"  routerLink="login"  >Login</a></li>
+      <li  *ngIf="LoginUserDetails!=null"><a class="dropdown-item"    (click)="openModal()" >Delete Account</a></li>
+      
+    </ul>
+  </li>
+</ul>
+      
+    </div>
+  </div>
+</nav>
+</header>
+
+<div class="container">
+  <router-outlet></router-outlet>
+
+</div>
+
+
+
+
+
+
+
+<!-- Modal -->
+<!-- <div class="modal-dialog modal-dialog-centered"> -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()" ></button>
+      </div>
+      <div class="modal-body">
+        Your Account will be permanently deleted.Do You want to perform this action ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  (click)="DeleteUserAccount(  LoginUserDetails.id)">Yes</button>
+        <button type="button" class="btn btn-primary" (click)="closeModal()">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- </div> -->
+
+
+
+
+
+

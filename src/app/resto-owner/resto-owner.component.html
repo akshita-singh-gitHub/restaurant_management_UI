@@ -1,0 +1,47 @@
+<div class="container2">
+  
+    <h2 class="heading">Restaurant list</h2>
+
+    <table class="table">
+      <thead>
+        <tr class="tableHead">
+       
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <!-- <th scope="col">Cook Time</th> -->
+          <th scope="col">Available</th>
+          <th scope="col">Delete</th>
+          <th scope="col">Edit</th>
+        </tr>
+      </thead>
+      <tbody class="tableBody">
+        <tr *ngFor="let item of Detail ">
+          
+          <td>{{item.name}}</td>
+          <td>{{item.price}}</td>
+          <!-- <td>{{item.cookTime}}</td> -->
+          <td>
+            <button (click)="DisableFood(item.id)" *ngIf="item.available=='true'" class="btn btn-danger">Disable</button>  
+            <button (click)="DisableFood(item.id)" *ngIf="item.available=='false'" class="btn btn-danger">Able</button>  
+          </td>
+          <td> <i (click)="DeleteFood(item.id)" class="fa fa-trash" style="font-size:20px;color:rgb(149, 48, 48);"></i>
+          </td>
+          <td> 
+            <a routerLink="/updateFoodItem/{{item.id}}">
+            <i  class="fa fa-edit" style="font-size:20px;color:rgb(59, 173, 105);"></i>
+          </a>
+          </td>
+        </tr>
+    
+      </tbody>
+    </table>
+    
+    <button routerLink="/addFoodItem" class="btn btn-danger">Add Food</button>
+    </div>
+    
+    
+    
+    
+  
+  
+

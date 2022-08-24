@@ -1,0 +1,55 @@
+<div class="container2">
+    <h2 class="heading">Order list</h2>
+
+    <div id="search"  class="col-sm-12 ">
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" 
+         placeholder="Search by keywords" name="customerName" [(ngModel)]="customerName" (ngModelChange)="Search()">
+        <label for="search"> Search by keywords</label>
+      </div>
+    </div>
+    
+   <input type="date" [(ngModel)]="startDate"> <br>
+   <input type="date" [(ngModel)]="endDate">
+   <button  (click)="FilterByDate()" class="btn btn-danger"> Filter</button>
+   <div class="container table-responsive-md">
+   <table class="table">
+      <thead>
+        <tr class="tableHead">
+       
+          <th scope="col" (click)="sort('customerName')">CutomerName <i class="fa fa-sort"></i></th>
+          <th scope="col" >Order</th>
+         
+          <th scope="col" (click)="sort('restaurant')">Restaurant <i class="fa fa-sort"></i></th>
+          <th scope="col">Address</th>
+          <th scope="col" (click)="sort('datetime')">Date <i class="fa fa-sort"></i></th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody class="tableBody">
+    
+        <tr  *ngFor="let item of selectedData |orderBy: key: reverse ">
+        
+          <td>{{item.customerName}}</td>
+          <td>{{item.order}}</td>
+          
+          <td>{{item.restaurant}}</td>
+          <td>{{item.address}}</td>
+          
+          <td>{{item.datetime | date }}</td>
+          <td>{{item.price}}</td>
+          </tr>
+          <tr >
+            <td colspan="5"></td>
+          <td font-weight="bold" > GrandTotal: {{grandTotal}}</td>
+          
+          
+        </tr>
+    
+      </tbody>
+    </table>
+    
+    
+    </div>
+    </div>
+    
