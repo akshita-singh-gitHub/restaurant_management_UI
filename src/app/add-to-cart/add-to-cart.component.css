@@ -1,3 +1,10 @@
+.container2 {
+    max-width: 100% !important;
+    margin: 29px;
+    margin-top: 92px;
+    padding-left: 23px;
+    /* align-items: center; */
+}
 .foodimage{
     color :inherit;
     border: none;

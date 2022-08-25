@@ -1,77 +1,8 @@
-<!-- <h1 *ngIf="LoginUserDetails!=null" >Welcome! {{LoginUserDetails.name}}</h1>
 
-
-
-<ng-container *ngIf="OrderItem!=null && flag==true">
-    <div class="container2">
-    <div class="card-table">
-        <div class="card-product">
-            <table class="table table-responsive">
-                <thead>
-                    <tr class="tableHead">
-                     
-                      <th scope="col">S.No</th>
-                      <th scope="col">Item image</th>
-                      <th scope="col">Item Name</th>
-                      <th scope="col">Restaurant</th>
-                      
-                      
-                    
-                      <th scope="col">Action</th>
-                      <th scope="col">Price</th>
-                     
-                    </tr>
-                  </thead>
-                  <tbody class="tableBody">
-                 
-                    <tr *ngFor="let foodItem of OrderItem; let i = index">
-                     
-                      <td>{{i+1}}</td>
-                      <td><img class="foodimage" src="{{foodItem.imageUrl}}" alt=""></td>
-                      <td>{{foodItem.name}}</td>
-                      <td>{{foodItem.restaurant}}</td>
-                    
-                    
-                        <td>{{foodItem.price}}</td>
-                    
-                     
-                    </tr>
-                    <tr >
-                      <td colspan="2"></td>
-  
-                   
-                    </tr>
-                 
-                  </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-</ng-container>
-
-
-<ng-container *ngIf="OrderItem==null || flag==false  ">
 <div class="container">
-    <div class="card">
-        <h4 class="card-title">Your Orders</h4>
-    </div>
-    <div>
-  </div>
- <div class="center">
-    <img src="/assets/cart.png" alt="">
-    <h5>You haven't placed any order yet</h5>
-    <button routerLink="/orders" class="btn btn-primary">ORDER NOW</button>
-
- </div>
-
-</div>
-</ng-container>
-
- -->
-
  <ng-container *ngIf="ItemLength!=0">
  <div class="container2">
-  <h2 class="heading">Order list</h2>
+  <h2 class="heading mt-5 pt-5 text-uppercase">Welcome! {{LoginUserDetails.name}} Your Order list</h2>
   
   <div class="container table-responsive-md">
   <table class="table">
@@ -114,8 +45,8 @@
   </ng-container>
 
   <ng-container *ngIf="ItemLength==0  ">
-    <div class="container">
-        <div class="card">
+    <div class="container mt-5 pt-5">
+        <div class="card pt-5 mt-5">
             <h4 class="card-title">Your Orders</h4>
         </div>
         <div>
@@ -129,3 +60,4 @@
     
     </div>
     </ng-container>
+  </div>

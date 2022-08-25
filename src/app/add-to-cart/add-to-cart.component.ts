@@ -30,14 +30,6 @@ export class AddToCartComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-
-    // this.CartServ.getLoginUserDetails().subscribe((result: any) => {
-    //   console.log(result);
-    //   if (result != '')
-        // this.LoginUserDetails = JSON.parse(localStorage.getItem('authToken'));
-
-    // })
      this.user=localStorage.getItem('authToken');
 
   

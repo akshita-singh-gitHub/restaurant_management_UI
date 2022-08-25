@@ -1,15 +1,6 @@
 /* 
-.heading{
-    margin: 92px 285px;
-    margin-bottom: 34px;
-    padding: 3px 238px;
-    align-items: center;
-    font-size: 2rem;
-}
-#search{
-    margin: 23px 190px;
-    padding: 0px 23px;
-}
+
+
 .list-container{
     margin: 0%;
    
@@ -101,3 +92,14 @@ ul li a:hover button{
  .img{
     max-height: 250px;
  }
+ #search{
+    margin: 23px 46px;
+    padding: 0px 23px;
+}
+.heading{
+    margin: 92px 214px;
+    margin-bottom: 34px;
+    padding: 22px 219px;
+    align-items: center;
+    font-size: 2rem;
+}
