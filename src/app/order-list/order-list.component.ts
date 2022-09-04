@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { MatTableDataSource } from '@angular/material/table';
 import { RestoService } from '../resto.service';
+import { CartService } from '../service/cart.service';
 
 @Component({
   selector: 'app-order-list',
@@ -22,7 +23,7 @@ export class OrderListComponent implements OnInit {
   grandTotal: any=0;
   // dataSource=new MatTableDataSource(this.OrderList);
 
-  constructor(private resto: RestoService) { }
+  constructor(private resto: RestoService, private CartServ: CartService) { }
 
 
   ngOnInit(): void {
@@ -47,8 +48,11 @@ export class OrderListComponent implements OnInit {
   }
 
   getUser() {
-    this.user = localStorage.getItem('authToken');
-    this.LoginUserDetails = JSON.parse(this.user);
+    this.CartServ.getLoginUserDetails().subscribe((result: any) => {
+      console.log("login user details item", result);
+      this.LoginUserDetails = result;
+      
+    
     console.log(this.LoginUserDetails.id, this.LoginUserDetails.name);
     this.Role = this.LoginUserDetails.role.toString().split(",");
     console.log("after split" + this.Role[1]);
@@ -56,6 +60,7 @@ export class OrderListComponent implements OnInit {
     this.restaurant = this.Role[1];
 
     return this.restaurant;
+  });
   }
 
   SetStatus(id: any) {

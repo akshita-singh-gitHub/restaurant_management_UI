@@ -10,7 +10,7 @@ export class RoleGuardGuard implements CanActivate {
   public LoginUserDetails!:any;
   public user!:any;
   public Role!:any;
-  constructor( private cartServ: CartService){}
+  constructor( private CartServ: CartService){}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -18,8 +18,13 @@ export class RoleGuardGuard implements CanActivate {
   }
 
   getUserRole(route:ActivatedRouteSnapshot){
-    this.user=localStorage.getItem('authToken');
-    this.LoginUserDetails = JSON.parse(this.user);
+    // this.user=localStorage.getItem('authToken');
+    // this.LoginUserDetails = JSON.parse(this.user);
+    this.CartServ.getLoginUserDetails().subscribe((result: any) => {
+      console.log("login user details item", result);
+      this.LoginUserDetails = result;
+      
+    });
   console.log(this.LoginUserDetails.id,this.LoginUserDetails.name);
   this.Role = this.LoginUserDetails.role.toString().split(",");
   const expectedRoles=route.data['expectedRoles'];

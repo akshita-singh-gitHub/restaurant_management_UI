@@ -114,8 +114,11 @@ console.log(this.array2,"minvikhjkh")
 
 
   getUser() {
-    this.user = localStorage.getItem('authToken');
-    this.LoginUserDetails = JSON.parse(this.user);
+    this.CartServ.getLoginUserDetails().subscribe((result: any) => {
+      console.log("login user details item", result);
+      this.LoginUserDetails = result;
+      
+    });
     console.log(this.LoginUserDetails.id, this.LoginUserDetails.name);
   }
   CloseAlert() {

@@ -22,20 +22,41 @@ private user! :any
 
   ngOnInit(): void {
 
-this.getUser(); 
+   console.log("tresting app comp")
+   this.user=localStorage.getItem('authToken')
+   console.log(typeof(this.user),"type of user app");
+
+      this.resto.UserInfo(JSON.parse(this.user)).subscribe((result:any)=>{
+        console.log(result,"userinfo");
+        this.LoginUserDetails=JSON.parse(result);
+        this.CartServ.setLoginUserDetails(this.LoginUserDetails);
+        
+      });
+    
+    
+
+
+  
+//     this.LoginUserDetails = JSON.parse(this.user);
+// console.log(this.LoginUserDetails.id,this.LoginUserDetails.name);
+
+// this.LoginUserDetails= this.CartServ.getUser()
+
+// console.log(this.LoginUserDetails)
+ 
 
   this.formModal=  new window.bootstrap.Modal(
     document.getElementById("exampleModal")
   );
 }
 
-getUser(){
-  this.user=localStorage.getItem('authToken');
-  if(this.user!=null)
-  {
-  this.LoginUserDetails = JSON.parse(this.user);
-console.log(this.LoginUserDetails.id,this.LoginUserDetails.name);}
-}
+// getUser(){
+//   this.user=localStorage.getItem('authToken');
+//   if(this.user!=null)
+//   {
+//   this.LoginUserDetails = JSON.parse(this.user);
+// console.log(this.LoginUserDetails.id,this.LoginUserDetails.name);}
+// }
 
 openModal(){
   // this.confirm=true;
@@ -49,7 +70,7 @@ closeModal(){
 DeleteUserAccount(Id:any){
   this.resto.DeleteUserAccount(Id).subscribe((result:any)=>{
     console.log("signed out successfully");
-    this.getUser();
+    this.ngOnInit();
     // this.router.navigate(['/order']);
    
   });
@@ -61,8 +82,8 @@ DeleteUserAccount(Id:any){
 
 Logout(Data:any){
   localStorage.removeItem('authToken');
-  this.router.navigate(['/orders']);
-  this.getUser();
+  this.router.navigate(['/login']);
+  this.ngOnInit();
 
 }
   }

@@ -7,7 +7,7 @@ import { AddRestoComponent } from './add-resto/add-resto.component';
 import { UpdateRestoComponent } from './update-resto/update-resto.component';
 import { RegisterComponent } from './register/register.component';
 import { ListRestoComponent } from './list-resto/list-resto.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 // import { CustomPipe } from './appPipes/custom.pipes';
 import { FilterPipe } from './appPipes/filter.pipe';
@@ -32,8 +32,6 @@ import { AdminSalesComponent } from './admin-sales/admin-sales.component';
 import {Ng2OrderModule} from 'ng2-order-pipe';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
-
-// import { RatingModule } from 'ng-starrating';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDoXsIfgzOtUueno6qnlwdRM5Vi7dcee2k",
@@ -90,7 +88,7 @@ export const firebaseConfig = {
    
 
   ],
-  providers: [],
+  providers:[],
   bootstrap: [AppComponent]
 })
 export class AppModule {

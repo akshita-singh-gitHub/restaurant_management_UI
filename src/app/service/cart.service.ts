@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpInterceptor } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -7,7 +7,7 @@ import { RestoService } from '../resto.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
+export class CartService   {
 
   private LoginUserDetails= new BehaviorSubject<any>(null)
   private OrderArr= new BehaviorSubject<any>(null);
@@ -24,6 +24,8 @@ export class CartService {
 
   
     constructor(private http:HttpClient,private resto: RestoService,private router: ActivatedRoute) { }
+
+
 
     setLoginUserDetails(data:string){
       this.LoginUserDetails.next(data);
@@ -44,18 +46,19 @@ export class CartService {
 
     setGrandTotal(total:any){
       this.grandTotal.next(total);
-      // console.log("this is from cart service"+data);
     }
     getGrandTotal():Observable<any>{
       return this.grandTotal.asObservable();
-    
     }
   
-    // getUser(){
-    //   this.user=localStorage.getItem('authToken');
-    //   this.LoginUserDetails = JSON.parse(this.user);
-    // return this.LoginUserDetails;
-    // }
+    getUser(){
+
+      this.user=localStorage.getItem('authToken');
+      console.log(this.user,"get user function")
+      this.LoginUserDetails = JSON.parse(this.user);
+      console.log("user details from cart service", this.LoginUserDetails)
+    return this.LoginUserDetails;
+    }
 
   
   // setItem(Item:any){

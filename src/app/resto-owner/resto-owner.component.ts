@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestoService } from '../resto.service';
+import { CartService } from '../service/cart.service';
 import { FoodDetail } from '../shared/models/foodDetail';
 
 @Component({
@@ -17,7 +18,7 @@ export class RestoOwnerComponent implements OnInit {
   name:any=[];
   Detail: any = [];
   FoodList: any;
-  constructor(private resto: RestoService) { }
+  constructor(private resto: RestoService, private CartServ : CartService) { }
 
   ngOnInit(): void {
     this.getUser();
@@ -26,8 +27,9 @@ this.getMenuList();
   }
 
   getUser(){
-    this.user=localStorage.getItem('authToken');
-    this.LoginUserDetails = JSON.parse(this.user);
+    this.CartServ.getLoginUserDetails().subscribe((result: any) => {
+      console.log("login user details item", result);
+      this.LoginUserDetails = result;
   console.log(this.LoginUserDetails,this.LoginUserDetails.name);
   // return this.LoginUserDetails.role;
   this.Role = this.LoginUserDetails.role.toString().split(",");
@@ -36,6 +38,7 @@ this.getMenuList();
   this.restaurant= this.Role[1];
   // this.restaurant=this.restaurant.replace(' ','');
   return this.restaurant;
+    });
   
   }
 

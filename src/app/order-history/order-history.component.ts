@@ -22,19 +22,15 @@ export class OrderHistoryComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.CartServ.getLoginUserDetails().subscribe((result: any) => {
-    //   console.log(result);
-    //   if (result != '')
-     
-    // })
-
-    this.user=localStorage.getItem('authToken');
-
+    this.CartServ.getLoginUserDetails().subscribe((result: any) => {
+      console.log("login user details item", result);
+      this.LoginUserDetails = result;
+      
   
-    this.LoginUserDetails = JSON.parse(this.user);
 console.log(this.LoginUserDetails.id,this.LoginUserDetails.name);
 
     this.GetCart();
+  });
   }
 
 

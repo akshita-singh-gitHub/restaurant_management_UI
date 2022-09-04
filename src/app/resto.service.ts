@@ -181,6 +181,10 @@ public RegisterUser(user:User,name:any,role:any): Observable<any>{
 public LoginUser(user:User): Observable<string>{
     return this.http.post(`${environment.apiUrl}/`+"User/login", user,{responseType:'text'}) ;
 }
+public UserInfo(user:any): Observable<any>{
+  console.log(user)
+  return this.http.post(`${environment.apiUrl}/`+"User/UserInfo", user,{responseType:'text'}) ;
+}
 
 
 //   signup(email:string,password : string){

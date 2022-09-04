@@ -182,8 +182,8 @@ const routes: Routes = [
 
 
 {
-  path: 'company',
-  loadChildren : ()=>import('./company/company.module').then(m=>m.CompanyModule)
+  path: 'admin',
+  loadChildren : ()=>import('./admin/admin.module').then(m=>m.AdminModule)
  
 }
 

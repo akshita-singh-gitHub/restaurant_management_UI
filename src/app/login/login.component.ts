@@ -19,21 +19,22 @@ export class LoginComponent implements OnInit {
     email: new FormControl('',[Validators.required,Validators.email]),
     password: new FormControl('',[Validators.required]),
   })
-
+     
   ngOnInit(): void {
       
   }
 
   LoginSubmit(){
+    console.log(typeof(this.LoginForm.value),"type of login");
     this.resto.LoginUser(this.LoginForm.value).subscribe((result:string)=>{
     //  this.user=result;
      console.log(result);
-     localStorage.setItem("authToken",result);
+     localStorage.setItem("authToken",result);     
     
     if(result=="User Not Found")
     this.alert=true;
     else{
-    this.CartServ.setLoginUserDetails(result);
+  
      this.router.navigate(['/cart']);
     }
     })

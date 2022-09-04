@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestoService } from '../resto.service';
+import { CartService } from '../service/cart.service';
 
 @Component({
   selector: 'app-admin-sales',
@@ -31,7 +32,7 @@ export class AdminSalesComponent implements OnInit {
  public grandTotal: any=0;
  
 
-  constructor(private resto : RestoService) { }
+  constructor(private resto : RestoService, private CartServ : CartService) { }
 
   ngOnInit(): void {
     this.getUser();
@@ -52,8 +53,11 @@ export class AdminSalesComponent implements OnInit {
 
 
   getUser() {
-    this.user = localStorage.getItem('authToken');
-    this.LoginUserDetails = JSON.parse(this.user);
+    this.CartServ.getLoginUserDetails().subscribe((result: any) => {
+      console.log("login user details item", result);
+      this.LoginUserDetails = result;
+      
+   
     console.log(this.LoginUserDetails.id, this.LoginUserDetails.name);
     this.Role = this.LoginUserDetails.role.toString().split(",");
     console.log("after split" + this.Role[1]);
@@ -61,6 +65,7 @@ export class AdminSalesComponent implements OnInit {
     this.restaurant = this.Role[1];
 
     return this.restaurant;
+  });
   }
 
   getOrderList(){
