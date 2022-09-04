@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.alert=true;
     else{
   
-     this.router.navigate(['/cart']);
+     this.router.navigate(['user/cart']);
     }
     })
   }

@@ -56,13 +56,13 @@
     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0 ">
         
-          <li class="nav-item"><a class="nav-link "  aria-current="page" routerLink="addResto">Add Restaurant</a></li>
+          <li class="nav-item"><a class="nav-link "  aria-current="page" routerLink="admin/AddResto">Add Restaurant</a></li>
           <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="orders">Menu</a></li>
-          <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="AdminRestoList">Admnin</a></li>
-          <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="AdminMenuList">AdmninMenu</a></li>
-          <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="RestoOwner">RestoOwner</a></li>
-          <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="OrderList">OrderList</a></li>
-          <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="AdminSales">AdminSales</a></li>
+          <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="admin/AdminRestoList">Admnin</a></li>
+          <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="admin/AdminMenuList">AdmninMenu</a></li>
+          <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="restaurant-owner/RestoOwner">RestoOwner</a></li>
+          <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="restaurant-owner/OrderList">OrderList</a></li>
+          <li class="nav-item"><a class="nav-link " aria-current="page" routerLink="admin/AdminSales">AdminSales</a></li>
      
       </ul>
  
@@ -72,8 +72,8 @@
       My Account 
     </a>
     <ul class="dropdown-menu dropdown-menu-dark ">
-      <li><a class="dropdown-item" routerLink="cart">My Cart</a></li>
-      <li><a class="dropdown-item" routerLink="OrderHistory">My Orders</a></li>
+      <li><a class="dropdown-item" routerLink="user/cart">My Cart</a></li>
+      <li><a class="dropdown-item" routerLink="user/OrderHistory">My Orders</a></li>
       <li *ngIf="LoginUserDetails!=null"><a class="dropdown-item" (click)="Logout(LoginUserDetails)" >Logout</a></li>
       <li  *ngIf="LoginUserDetails==null"><a class="dropdown-item"  routerLink="login"  >Login</a></li>
       <li  *ngIf="LoginUserDetails!=null"><a class="dropdown-item"    (click)="openModal()" >Delete Account</a></li>

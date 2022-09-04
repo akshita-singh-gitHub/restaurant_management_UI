@@ -28,10 +28,12 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit(): void {
 
-  
- 
+    this.CartServ.getLoginUserDetails().subscribe((result: any) => {
+      console.log("login user details item", result);
+      this.LoginUserDetails = result;
+    });
    this.getTag();
-   this.getUser();
+  
   
 console.log("Before  getFoodItem in order comp")
   // this.CartServ.getFoodItem().subscribe((result: any) => {
@@ -44,13 +46,13 @@ console.log("Before  getFoodItem in order comp")
 
   }
 
-  getUser(){
-    this.user=localStorage.getItem('authToken');
-    if(this.user!=null)
-    {
-    this.LoginUserDetails = JSON.parse(this.user);
-  console.log(this.LoginUserDetails.id,this.LoginUserDetails.name);}
-  }
+  // getUser(){
+  //   this.user=localStorage.getItem('authToken');
+  //   if(this.user!=null)
+  //   {
+  //   this.LoginUserDetails = JSON.parse(this.user);
+  // console.log(this.LoginUserDetails.id,this.LoginUserDetails.name);}
+  // }
 
   AddToCart(UserId:any,customerName:any,foodId:any){
 this.resto.AddToCart(UserId,customerName,foodId).subscribe((result:any)=>{
