@@ -1,58 +1,54 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl ,Validators } from '@angular/forms';
-import { RestoList } from '../../model';
-import { RestoService } from '../../resto.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { RestoList } from '../../shared/model';
+import { RestoService } from '../../shared/service/resto.service';
 
 @Component({
   selector: 'app-add-resto',
   templateUrl: './add-resto.component.html',
-  styleUrls: ['./add-resto.component.css']
+  styleUrls: ['./add-resto.component.css'],
 })
 export class AddRestoComponent implements OnInit {
-
   @Input() ListItem?: RestoList;
-componentname="user"
+  componentname = 'user';
 
-alert:boolean=false;
-  constructor(private Resto: RestoService) { }
+  alert: boolean = false;
+  constructor(private Resto: RestoService) {}
 
   RestoForm = new FormGroup({
-    name: new FormControl('',[Validators.required, Validators.minLength(3),Validators.pattern('^[a-zA-Z ]*$')]),
-    email: new FormControl('',[Validators.required,Validators.email]),
-    address: new FormControl('',[Validators.required]),
+    name: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.pattern('^[a-zA-Z ]*$'),
+    ]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    address: new FormControl('', [Validators.required]),
     imageUrl: new FormControl(''),
     favourite: new FormControl('true'),
-  })
+  });
 
-  ngOnInit(): void {
-   
-
-  }
+  ngOnInit(): void {}
 
   CollectResto() {
     // console.log(this.RestoForm.value);
 
-    this.Resto.SaveResto(this.RestoForm.value).subscribe((result:any)=>{
-      console.log(result)
-      this.alert=true
-      this.RestoForm.reset({})
-    })
-     
+    this.Resto.SaveResto(this.RestoForm.value).subscribe((result: any) => {
+      console.log(result);
+      this.alert = true;
+      this.RestoForm.reset({});
+    });
   }
 
-  CloseAlert()
-  {
-    this.alert=false
+  CloseAlert() {
+    this.alert = false;
   }
-   get name(){
+  get name() {
     return this.RestoForm.get('name');
   }
-   get email(){
+  get email() {
     return this.RestoForm.get('email');
   }
-   get address(){
+  get address() {
     return this.RestoForm.get('address');
   }
-
-  
 }

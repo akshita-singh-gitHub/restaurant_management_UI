@@ -1,49 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { RestoList } from '../../model';
-import { RestoService } from '../../resto.service';
-import { FoodDetail } from '../../shared/models/foodDetail';
+import { RestoList } from '../../shared/model';
+import { RestoService } from '../../shared/service/resto.service';
+import { FoodDetail } from '../../shared/model';
 
 @Component({
   selector: 'app-admin-resto-list',
   templateUrl: './admin-resto-list.component.html',
-  styleUrls: ['./admin-resto-list.component.css']
+  styleUrls: ['./admin-resto-list.component.css'],
 })
 export class AdminRestoListComponent implements OnInit {
-  public FoodList!:any;
+  public FoodList!: any;
 
   collection: RestoList[] = [];
-  nameSearch:string=''
-  constructor(private resto: RestoService) { }
+  nameSearch: string = '';
+  constructor(private resto: RestoService) {}
 
   ngOnInit(): void {
     this.getRestoList();
-
-  
   }
 
-  getRestoList(){
+  getRestoList() {
     this.resto.getList().subscribe((result: RestoList[]) => {
       // console.log(result);
       this.collection = result;
-    })
+    });
   }
-  
-  Delete(item:any){
-    this.collection.splice(item,1)
-    this.resto.DeleteResto(item).subscribe((result )=>{
-      console.log(result ,'result deleted');
+
+  Delete(item: any) {
+    this.collection.splice(item, 1);
+    this.resto.DeleteResto(item).subscribe((result) => {
+      console.log(result, 'result deleted');
       this.getRestoList();
-    })
-          
-
+    });
   }
-  DisableFood(id:any){
-    this.resto.SetRestoAvailability(id).subscribe((result:any )=>{
-      console.log(result ,'result ');
-      
-    })
-          
-
+  DisableFood(id: any) {
+    this.resto.SetRestoAvailability(id).subscribe((result: any) => {
+      console.log(result, 'result ');
+    });
   }
-
 }

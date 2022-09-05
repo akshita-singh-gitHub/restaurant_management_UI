@@ -1,0 +1,63 @@
+<div class="login-container">
+  <div *ngIf="alert" class="alert alert-danger" role="alert">
+    <strong> Oops!</strong> User Not Found
+    <button
+      (click)="CloseAlert()"
+      type="button"
+      class="close"
+      data-dismiss="alert"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form [formGroup]="LoginForm" (ngSubmit)="LoginSubmit()">
+    <h2 class="heading">Login</h2>
+    <div class="form-group input-group mb-3 w-50">
+      <span class="input-group-text">
+        <i class="fa fa-envelope"></i>
+      </span>
+      <input
+        [class.is-invalid]="email?.invalid && email?.touched"
+        type="email"
+        class="form-control"
+        formControlName="email"
+        placeholder="We'll never share your email with anyone else."
+      />
+      <div *ngIf="email?.invalid && email?.touched">
+        <small *ngIf="email?.errors?.['required']" class="text-danger">
+          Email is Required</small
+        >
+        <small *ngIf="email?.errors?.['email']" class="text-danger">
+          It should be of Email format</small
+        >
+      </div>
+      <div id="emailHelp" class="form-text"></div>
+    </div>
+    <div class="form-group input-group mb-3 w-50">
+      <span class="input-group-text">
+        <i class="fa fa-lock"></i>
+      </span>
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Enter Password"
+        name="password"
+        formControlName="password"
+      />
+      <!-- <small class="form-text text-danger w-100">Please Enter Email</small> -->
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    <small class="text"
+      >Noy Registered yet !!
+
+      <a routerLink="/register">Register Now</a>
+    </small>
+
+    <!-- </div> -->
+  </form>
+</div>

@@ -1,76 +1,133 @@
 <div class="container2">
-    <h3 class="heading">Add Food Item</h3>
-    <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
-      <strong> Success!</strong> You are registered in Food Item Successfully
-      <button (click)="CloseAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <form [formGroup]="FoodItemForm" (ngSubmit)="CollectFood()">
-        <div class="mb-3" > 
-          <label for="exampleInputEmail1" class="form-label" >name </label>
-          <input   type="text"  class="form-control"  formControlName="name"  placeholder="Enter Your name Here">
-          
+  <h3 class="heading container mt-5 pt-5">Add Food Item</h3>
+  <div
+    *ngIf="alert"
+    class="alert alert-success alert-dismissible fade show"
+    role="alert"
+  >
+    <strong> Success!</strong> You are registered in Food Item Successfully
+    <button
+      (click)="CloseAlert()"
+      type="button"
+      class="close"
+      data-dismiss="alert"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form [formGroup]="FoodItemForm" (ngSubmit)="CollectFood()">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">name </label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+        placeholder="Enter Your name Here"
+      />
 
-    
-          <div *ngIf="name?.invalid && name?.touched">
-          <small *ngIf="name?.errors?.['required']" class="text-danger " > name is Required</small>
-          <small *ngIf="name?.errors?.['minlength']" class="text-danger " > Minimum characters should be 3</small>
-          <small *ngIf="name?.errors?.['pattern']" class="text-danger " >only a-z ,A-Z character can be used</small>
-        </div>
-          <div id="emailHelp" class="form-text"></div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"> Restaurant</label>
-          <input    type="text" class="form-control"   formControlName="restaurant" placeholder="Enter address">
-           <small *ngIf ="restaurant?.invalid && restaurant?.touched "  class="text-danger " > Restaurant is Required</small>
-    
-          <div id="emailHelp" class="form-text"></div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Set Price</label>
-          <input [class.is-invalid]="price?.invalid && price?.touched " type="number" class="form-control"  formControlName="price" placeholder="We'll never share your email with anyone else." >
-          <div *ngIf="price?.invalid && price?.touched">
-            <small *ngIf="price?.errors?.['required']" class="text-danger " > name is Required</small>
-          </div>
-          <div id="emailHelp" class="form-text"></div>
-        </div>
-
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"> Image Url</label>
-          <input    type="text" class="form-control"   formControlName="imageUrl" placeholder="Enter address">
-    
-         <div id="emailHelp" class="form-text"></div>
-        </div> 
-         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"> Tag</label>
-          <input    type="text" class="form-control"   formControlName="tag" placeholder="Enter address">
-    
-          <div id="emailHelp" class="form-text"></div>
-        </div>
-         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"> Cook TIme</label>
-          <input    type="text" class="form-control"   formControlName="cookTime" placeholder="Enter address">
-    
-          <div id="emailHelp" class="form-text"></div>
-        </div>
-       <!-- Chech box for avail, fav -->
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
-          <label class="form-check-label" for="flexCheckDefault" >
-           Available
-          </label>
-        </div>
-        <div class="form-check">
-          <input    class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-          <label class="form-check-label" for="flexCheckChecked">
-            Favourite
-          </label>
-        </div>
-       
-        
-        
-        
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      <div *ngIf="name?.invalid && name?.touched">
+        <small *ngIf="name?.errors?.['required']" class="text-danger">
+          name is Required</small
+        >
+        <small *ngIf="name?.errors?.['minlength']" class="text-danger">
+          Minimum characters should be 3</small
+        >
+        <small *ngIf="name?.errors?.['pattern']" class="text-danger"
+          >only a-z ,A-Z character can be used</small
+        >
+      </div>
+      <div id="emailHelp" class="form-text"></div>
     </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label"> Restaurant</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="restaurant"
+        placeholder="Enter address"
+      />
+      <small
+        *ngIf="restaurant?.invalid && restaurant?.touched"
+        class="text-danger"
+      >
+        Restaurant is Required</small
+      >
+
+      <div id="emailHelp" class="form-text"></div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Set Price</label>
+      <input
+        [class.is-invalid]="price?.invalid && price?.touched"
+        type="number"
+        class="form-control"
+        formControlName="price"
+        placeholder="We'll never share your email with anyone else."
+      />
+      <div *ngIf="price?.invalid && price?.touched">
+        <small *ngIf="price?.errors?.['required']" class="text-danger">
+          name is Required</small
+        >
+      </div>
+      <div id="emailHelp" class="form-text"></div>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label"> Image Url</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="imageUrl"
+        placeholder="Enter address"
+      />
+
+      <div id="emailHelp" class="form-text"></div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label"> Tag</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="tag"
+        placeholder="Enter address"
+      />
+
+      <div id="emailHelp" class="form-text"></div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label"> Cook TIme</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="cookTime"
+        placeholder="Enter address"
+      />
+
+      <div id="emailHelp" class="form-text"></div>
+    </div>
+    <!-- Chech box for avail, fav -->
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="flexCheckDefault"
+        checked
+      />
+      <label class="form-check-label" for="flexCheckDefault"> Available </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="flexCheckChecked"
+        checked
+      />
+      <label class="form-check-label" for="flexCheckChecked"> Favourite </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

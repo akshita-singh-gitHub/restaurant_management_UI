@@ -1,43 +1,50 @@
-  <div class="container2">
-<h2 class="heading">Order list</h2>
+<div class="container2">
+  <h2 class="heading container mt-5 pt-5">Order list</h2>
 
-<div class="container table-responsive-md">
-<table class="table">
-  <thead>
-    <tr class="tableHead">
-     
-      <th scope="col">CutomerName</th>
-      <th scope="col">Order</th>
-      <th scope="col">Price</th>
-      <th scope="col">Restaurant</th>
-      <th scope="col">Address</th>
-      <th scope="col">Status</th>
-      <th scope="col">Date</th>
-     
-    </tr>
-  </thead>
-  <tbody class="tableBody">
-    <tr *ngFor="let item of OrderList ">
-    
-      <td>{{item.customerName}}</td>
-      <td>{{item.order}}</td>
-      <td>{{item.price}}</td>
-      <td>{{item.restaurant}}</td>
-      <td>{{item.address}}</td>
-      <td>
-        <button (click)="SetStatus(item.id)" *ngIf="item.status=='pending'" class="btn btn-danger">Set To Complete</button>  
-        <button (click)="SetStatus(item.id)" *ngIf="item.status=='completed'" class="btn btn-primary">Set To Pending</button>  
-      </td>
-      <td>{{item.datetime | date }}</td>
-    </tr>
+  <div class="container table-responsive-md">
+    <table class="table">
+      <thead>
+        <tr class="tableHead">
+          <th scope="col">CutomerName</th>
+          <th scope="col">Order</th>
+          <th scope="col">Price</th>
+          <th scope="col">Restaurant</th>
+          <th scope="col">Address</th>
+          <th scope="col">Status</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody class="tableBody">
+        <tr *ngFor="let item of OrderList">
+          <td>{{ item.customerName }}</td>
+          <td>{{ item.order }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.restaurant }}</td>
+          <td>{{ item.address }}</td>
+          <td>
+            <button
+              (click)="SetStatus(item.id)"
+              *ngIf="item.status == 'pending'"
+              class="btn btn-danger"
+            >
+              Set To Complete
+            </button>
+            <button
+              (click)="SetStatus(item.id)"
+              *ngIf="item.status == 'completed'"
+              class="btn btn-primary"
+            >
+              Set To Pending
+            </button>
+          </td>
+          <td>{{ item.datetime | date }}</td>
+        </tr>
 
-    <tr >
-      <td colspan="4"></td>
-      <td font-weight="bold" > GrandTotal: {{grandTotal}}</td>
-   
-    </tr>
-  </tbody>
-</table>
-
-</div>
+        <tr>
+          <td colspan="4"></td>
+          <td font-weight="bold">GrandTotal: {{ grandTotal }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

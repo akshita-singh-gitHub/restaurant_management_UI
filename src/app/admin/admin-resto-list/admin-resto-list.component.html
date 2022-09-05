@@ -1,48 +1,51 @@
 <div class="container2">
-  
-    <h2 class="heading">Restaurant list</h2>
-    
-    <div class="col-md-8">
-      <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="search" 
-         placeholder="Search by keywords" [(ngModel)]="nameSearch">
-        <label for="search"> Search by keywords</label>
-      </div>
+  <h2 class="heading container mt-5 pt-5">Restaurant list</h2>
+
+  <div class="col-md-8">
+    <div class="form-floating mb-3">
+      <input
+        type="email"
+        class="form-control"
+        id="search"
+        placeholder="Search by keywords"
+        [(ngModel)]="nameSearch"
+      />
+      <label for="search"> Search by keywords</label>
     </div>
-    <table class="table">
-      <thead>
-        <tr class="tableHead">
-       
-          <th scope="col">Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Address</th>
-          <th scope="col">Operation</th>
-        </tr>
-      </thead>
-      <tbody class="tableBody">
-        <tr *ngFor="let item of collection |filter: nameSearch">
-          
-          <td>{{item.name}}</td>
-          <td>{{item.email}}</td>
-          <td>{{item.address}}</td>
-          <!-- <td>{{item.available}} <i (click)="DisableFood(item.id)" class="fa fa-trash" style="font-size:20px;color:rgb(149, 48, 48);"></i>
+  </div>
+  <table class="table">
+    <thead>
+      <tr class="tableHead">
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Operation</th>
+      </tr>
+    </thead>
+    <tbody class="tableBody">
+      <tr *ngFor="let item of collection | filter: nameSearch">
+        <td>{{ item.name }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.address }}</td>
+        <!-- <td>{{item.available}} <i (click)="DisableFood(item.id)" class="fa fa-trash" style="font-size:20px;color:rgb(149, 48, 48);"></i>
           </td> -->
-          <td> <i (click)="Delete(item.id)" class="fa fa-trash" style="font-size:20px;color:rgb(149, 48, 48);"></i>
-          </td>
-          <td> 
-            <a routerLink="updateResto/{{item.id}}">
-            <i  class="fa fa-edit" style="font-size:20px;color:rgb(59, 173, 105);"></i>
+        <td>
+          <i
+            (click)="Delete(item.id)"
+            class="fa fa-trash"
+            style="font-size: 20px; color: rgb(149, 48, 48)"
+          ></i>
+        </td>
+        <td>
+          <a routerLink="updateResto/{{ item.id }}">
+            <i
+              class="fa fa-edit"
+              style="font-size: 20px; color: rgb(59, 173, 105)"
+            ></i>
           </a>
-          </td>
-        </tr>
-    
-      </tbody>
-    </table>
-    <button routerLink="/addResto" class="btn btn-primary">Add Food</button>
-    
-    </div>
-
-
-
-
-    
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button routerLink="/addResto" class="btn btn-primary">Add Food</button>
+</div>
